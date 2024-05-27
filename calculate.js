@@ -1,4 +1,3 @@
-
 axisX = [{ name: "Dx", force: undefined, position: 9 }];
 axisY = [
   { name: "Ay", force: undefined, position: 0 },
@@ -18,9 +17,7 @@ axisYV3 = [
 // ExternalForce = [
 //   { name: "P1", force: 1.5, startPoint: 0, EndPoint: 3, type: "Triangular" },
 // ];
-ExternalForce = [
-  { name: "P1", force: 50, startPoint: 0, EndPoint: 8, type: "Distributed" },
-];
+ExternalForce =[{ name: "P1", force: 50, startPoint: 0, EndPoint: 8, type: "Distributed" }];
 // ExternalForce = [{ name: "P1", force: 6,startPoint: 0, EndPoint: 0, type : "Point" }]
 
 function addForce(axis, force) {
@@ -38,12 +35,8 @@ function findMoment(axis, moments, ExternalForce) {
     if (force.position != moments.pivotPosition)
       devide = Math.abs(force.position - moments.pivotPosition);
   });
-  totalMoment = ExternalForce.reduce((total, force) => 
-  {
-      if (
-        force.startpoint == force.EndPoint &&
-        force.startpoint == moments.pivotPosition
-      ) {
+  totalMoment = ExternalForce.reduce((total, force) =>{
+    if (force.startpoint == force.EndPoint &&force.startpoint == moments.pivotPosition) {
         return total;
       }
       total += MomentTypeForces(force, moments.pivotPosition);
@@ -115,71 +108,39 @@ function MomentTypeForces(force, pivotPosition) {
   return result;
 }
 
-function findEquationForce(BeamLength) {
-  x = 0;
-  return function (axis, ExternalForce) 
-  {
-    ExternalForce.sort((a, b) => a.startPoint - b.startPoint);
-    // console.log(Force)
-    // Exforce = Force.map(force=>
-    // {
-    //   if(force.type == "Distributed") 
-    //   {return force.force +"*X"}
-    //   else if(force.type == "Triangular")
-    //   { return "(1/2)X*"+force.force+"X" }
-    //   else 
-    //   {return force }
-    // });
-    // AxForce = axis.filter(force => force.point != BeamLength);
-    EquationSection = [];
-    for( let i = 0 ; i< ExternalForce.length();i++){
-      Fexception = (ExternalForce.startPoint[i] == BeamLength || (ExternalForce.startPoint[i] == 0 &&ExternalForce.EndPoint[i] ==0))
-      if(Fexception){
-        console.log("Have point Force with 0 ");
-        continue;
-      }
-      x++;
-      // forceArea = axis.filter(AxForce => AxForce.point <= ExternalForce.EndPoint[i])
-      countForceAxis = 0;
-      
-      VEquation = "";
-      if(ExternalForce.type[i] == "Distributed"){
-        section1 = (ExternalForce.EndPoint[i] -  ExternalForce.startPoint[i])/2;
-        AxisArea = axis.filter(AxForce => AxForce.point <= section1 ).reduce((total,force)=> force.force+total,0)
-        forceArea = ExternalForce.filter(force => {
-          force.startPoint <= section && (force.startPoint == ExternalForce.startPoint[i] && force.type != ExternalForce.type[i] )
-        })
-        VEquation = (`${AxisArea}-${ExternalForce.force[i]}`)
-        MEquation = (`${AxisArea}X${x}-${ExternalForce.force[i]}X${x}`) // section ต้องหารครึ่ง 1/2 *X${x}*
-        
-      }
-      else if (ExternalForce.type[i] == "Triangular"){
-        
-      }
-      else{
-        
-      }
-      // for(let j = 0 ; j < i;j++){
-      //   countForceAxis += 
-      // }
-    }
-    return solvedEquation;
-  };
-}
-
-function  ForceBefore (Force , x,section){
-  VtotalForce = Force.reduce((total,Force)=> total+MomentTypeForces(Force),0);
-  let MomentForce = [];
-  for(let i =0 ; i <Force.length();i++){
-    MomentForce = d
+function ShearEquation(BeamLength,Force,axis) {
+  axis = axis.find((force)=>force.position == 0)
+  Force =Force[0];
+  if(Force.type == "Distributed"){
+    return `${axis.force}- ${Force.force}X`
+  }else if(Force.type == "Triangular"){
+    Wx = (0.5)*(Force.force / BeamLength);
+    return `${axis.force}- ${Wx}X^2`
+  }else{
+    lengthX1 = axis.force;
+    lengthX2 = axis.force - Force.force;
+    return{x1:lengthX1 , x2:lengthX2}
   }
-  return [VtotalForce,MomentForce]
 }
 
+function MomentEquation(BeamLength,Force,axis){
+  axis = axis.find((force)=>force.position == 0)
+  Force =Force[0];
+  if(Force.type == "Distributed"){
+    return `${axis.force}X - ${Force.force/2}X^2`
+  }else if(Force.type == "Triangular"){
+    Wx = (0.5)*(Force.force / BeamLength)*(1/3);
+    return `${axis.force}X- ${Wx}X^3`
+  }else{
+    lengthX1 = axis.force+"X1";
+    lengthX2 = (axis.force - Force.force)+"X2" +"-"+Force.force*(-Force.startPoint);
+    return{x1:lengthX1 , x2:lengthX2}
+  }
+}
+
+console.log(ExternalForce)
 findMoment(axisYV2,Fmoment,ExternalForce);
 console.log(axisYV2);
-// findUnknown(axisX);
-// console.log(axisX);
+console.log(ShearEquation(beam,ExternalForce,axisYV2))
+console.log(MomentEquation(beam,ExternalForce,axisYV2))
 
-EquationX = findEquationForce(beam);
-console.log(EquationX(axisYV2,ExternalForce));
