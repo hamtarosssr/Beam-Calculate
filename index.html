@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="internal.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="containerinput">
+        <h1>Input</h1>
+        <ul>
+            <li><a class="active">Length</a></li>
+            <li><a>Support</a></li>
+            <li style="float:right"><a>Loads</a></li>
+        </ul>
+        <div class="Length" style="display: block;">
+            <h3>Beam Length:</h3>
+            <input class="BLength" type="number" value="10">
+            <h3>Length Unit:</h3>
+            <select class="ULength" name="dropdown">
+                <option value="m_m">Millimeter (mm)</option>
+                <option value="c_m">Centimeter (cm)</option>
+                <option value="d_m">Decimeter (dm)</option>
+                <option value="m" selected>Meter (m)</option>
+                <option value="in">Inch (in)</option>
+                <option value="yd">Yard (yd)</option>
+                <option value="ft">Foot (ft)</option>
+            </select>
+            <h3>Force Unit:</h3>
+            <select class="FUnit" name="dropdown">
+                <option value="N">Newton (N)</option>
+                <option value="k_N" selected="">Kilonewton (kN)</option>
+                <option value="M_N">Meganewton (MN)</option>
+                <option value="gs">Gram-force (gf)</option>
+                <option value="k_gs">Kilogram-force (kgF)</option>
+                <option value="M_gs">Ton-force (tf)</option>
+                <option value="pdl">Poundal (pdl)</option>
+                <option value="lbf">Pound-force (lbf)</option>
+                <option value="kipf">Kip-force (kipf)</option>
+            </select>
+        </div>
+        <div class="Support" style="display: none;">
+            <div class="textLeft">Left</div>
+            <div class="button-container">
+                <button class="btnSupfix"><img src="asset/sup_fixed.svg" alt="fixed"></button>
+                <button class="btnSupRoller"><img src="asset/sup_fluid.svg" alt="roller"></button>
+                <button class="btnSupWall"><img src="asset/sup_anchorage.svg" alt="wall"></button>
+            </div>
+            <div class="textRight">Right</div>
+            <div class="button-container">
+                <button class="btnSupfix2"><img src="asset/sup_fixed.svg" alt="fixed"></button>
+                <button class="btnSupRoller2"><img src="asset/sup_fluid.svg" alt="roller"></button>
+                <button class="btnSupWall2"><img src="asset/sup_anchorage.svg" alt="wall"></button>
+            </div>
+        </div>
+        <div class="Loads" style="display: none;">
+            <div class="button-container">
+                <button class="btnforce1"><img src="asset/pressure_1.svg" alt="fixed"></button>
+                <button class="btnforce2"><img src="asset/pressure_2.svg" alt="roller"></button>
+                <button class="btnforce3"><img src="asset/pressure_3.svg" alt="wall"></button>
+                <button class="btnforce4"><img src="asset/pressure_4.svg" alt="wall"></button>
+            </div>
+        </div>
+        <!-- Load1 -->
+        <div class="Load1" style="display: none;">
+            <div class="textposition">Adding a Point Load</div>
+            <div class="position-container">
+                <div>Position</div>
+                <input class="position-input" type="number">
+            </div>
+            <div class="position-container">
+                <div>Load Magnitude</div>
+                <input class="force-input" type="number" value="10">
+                <div style="display:  none;" class="button-container2">
+                    <button class="up"><ion-icon name="arrow-up-outline"></ion-icon></button>
+                    <button class="down"><ion-icon name="arrow-down-outline"></ion-icon></button>
+                </div>
+            </div>
+            <div style="display: none;" class="angle-container">
+                <div>Angle (deg):</div>
+                <input class="angle" type="number" min="0" max="180" value="90">
+
+            </div>
+            <div class="cancle-add">
+                <button class="cancle-btn">Cancle</button>
+                <button class="addforce1">Add</button>
+            </div>
+        </div>
+        <!-- Load2 -->
+        <div class="Load2" style="display: none;">
+            <div class="textposition">Adding Bending Moment</div>
+            <div class="position-container">
+                <div>Position</div>
+                <input class="position-input2" type="number">
+            </div>
+            <div class="position-container">
+                <div>Moment Magnitude<br> (kN*m):</div>
+                <input class="Moment-input" type="number">
+                <div style="display: none;" class="button-container3">
+                    <button class="cw"><ion-icon name="refresh-outline"></ion-icon></button>
+                    <button class="ccw"><ion-icon style="transform: scaleX(-1);"
+                            name="refresh-outline"></ion-icon></button>
+                </div>
+            </div>
+            <div class="cancle-add">
+                <button class="cancle-btn">Cancle</button>
+                <button class="addforce2">Add</button>
+            </div>
+        </div>
+        <!-- load3 -->
+        <div class="Load3" style="display: none;">
+            <div class="textposition">Adding a Uniformly Distributed Load</div>
+            <div class="position-container">
+                <div>Start Position</div>
+                <input class="Start-position-input" type="number">
+            </div>
+            <div class="position-container">
+                <div>End Position</div>
+                <input class="End-position-input" type="number">
+            </div>
+            <div class="position-container">
+                <div>Load Magnitude</div>
+                <input class="force-input" type="number">
+                <div class="button-container4">
+                    <button class="up2"><ion-icon name="arrow-up-outline"></ion-icon></button>
+                    <button class="down2"><ion-icon name="arrow-down-outline"></ion-icon></button>
+                </div>
+            </div>
+            <div class="cancle-add">
+                <button class="cancle-btn">Cancle</button>
+                <button class="addforce3">Add</button>
+            </div>
+        </div>
+        <!-- Load4 -->
+        <div class="Load4" style="display: none;">
+            <div class="textposition">Adding a Triangular/Trapezoidal Load</div>
+            <div class="position-container">
+                <div>Start Position</div>
+                <input class="Start-position-input" type="number">
+            </div>
+            <div class="position-container">
+                <div>End Position</div>
+                <input class="End-position-input" type="number">
+            </div>
+            <div class="position-container">
+                <div>Start Magnitude</div>
+                <input class="force-input" type="number">
+                <div class="button-container5">
+                    <button class="up3"><ion-icon name="arrow-up-outline"></ion-icon></button>
+                    <button class="down3"><ion-icon name="arrow-down-outline"></ion-icon></button>
+                </div>
+            </div>
+            <div class="position-container">
+                <div>End Magnitude</div>
+                <input class="force-input" type="number">
+                <div class="button-container6">
+                    <button class="up4"><ion-icon name="arrow-up-outline"></ion-icon></button>
+                    <button class="down4"><ion-icon name="arrow-down-outline"></ion-icon></button>
+                </div>
+            </div>
+            <div class="cancle-add">
+                <button class="cancle-btn">Cancle</button>
+                <button class="addforce4">Add</button>
+            </div>
+        </div>
+        <div class="canvas">
+            <div class="beam"></div>
+            <div class="reaction">
+                <img style="display: none;" class="ax" src="asset/Ax.png" alt="">
+                <img style="display: none;" class="ay" src="asset/Ay.png" alt="">
+                <img style="display: none;" class="bx" src="asset/Bx.png" alt="">
+                <img style="display: none;" class="by" src="asset/By.png" alt="">
+            </div>
+            <div class="SuppicLeft" style="top: 39%; left: 395px;"><img src=""></div>
+            <div class="SuppicRight" style="top: 39%; left: 1390px;"><img src=""></div>
+            <div class="scaleNumber">10 Meter (m)</div>
+            <div class="scaleLine"></div>
+            <div class="scaleLineH"></div>
+            <div class="scaleLineT"></div>
+            <div class="arrowPointLoad"><img src=""></div>
+            <div class="Magnitude"></div>
+            <div class="Magnitude-Moment"></div>
+            <div class="Moment mirror"><img src=""></div>
+        </div>
+        <script src="internal.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

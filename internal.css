@@ -1,0 +1,401 @@
+body {
+    margin-top: 0;
+    margin-left: 0;
+    overflow: hidden;
+}
+
+.containerinput {
+    background-color: rgb(56, 56, 56);
+    width: 23%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    position: absolute;
+    color: white;
+}
+
+ul {
+    top: 10%;
+    position: absolute;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #04AA6D;
+}
+
+.Length {
+    position: absolute;
+    top: 17%;
+}
+
+.BLength {
+    width: 250px;
+    height: 25px;
+}
+
+h3 {
+    color: white;
+    text-align: left;
+    left: 0;
+    margin-bottom: 10px;
+}
+
+input[type="number"] {
+    text-align: center;
+}
+
+.ULength,
+.FUnit {
+    width: 257px;
+    height: 30px;
+}
+
+.canvas {
+    width: 100%;
+}
+
+.beam {
+    position: absolute;
+    top: 40%;
+    width: 1000px;
+    height: 2px;
+    background-color: black;
+    left: 420px;
+}
+
+.scaleNumber{
+    position: absolute;
+    top: 56%;
+    left: 900px;
+    font-size: 20px;
+}
+.scaleLine{
+    position: absolute;
+    top: 60%;
+    width: 1000px;
+    height: 1.5px;
+    background-color: rgb(47, 47, 47);
+    left: 420px;
+}
+
+.scaleLineH{
+    position: absolute;
+    top: 56%;
+    width: 1.2px;
+    height: 50px;
+    background-color: rgb(47, 47, 47);
+    left: 420px;
+}
+
+.scaleLineT{
+    position: absolute;
+    top: 56%;
+    width: 1.3px;
+    height: 50px;
+    background-color: rgb(47, 47, 47);
+    left: 1420px;
+}
+.Support {
+    position: absolute;
+    top: 17%;
+}
+.textLeft{
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    margin-top: 7px;
+    left: -30px;
+}
+
+.button-container {
+    border: rgb(0, 0, 0) 1px solid;
+    margin-top: 50px;
+    display: flex;
+    gap: 0px; 
+}
+
+.btnSupfix,.btnSupRoller,.btnSupWall,.btnSupfix2,.btnSupRoller2,.btnSupWall2,.btnforce1,.btnforce2,.btnforce3,.btnforce4{
+    border-radius: 5px;
+    background-color: rgb(61, 61, 61);
+    flex: 1; 
+}
+
+.SuppicLeft{
+    position: absolute;
+}
+
+.SuppicRight{
+    position: absolute;
+}
+
+.textRight{
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    margin-top: 10px;
+    left: -30px;
+}
+.Loads{
+    position: absolute;
+    top: 17%;
+}
+
+.Load1,.Load2,.Load3,.Load4{
+    position: absolute;
+    top: 33%;
+}
+
+.textposition{
+    color: white;
+    font-size: 20px;
+    margin-top: 25px;
+}
+
+.position-container {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.position-container div {
+    color: white;
+    font-size: 15px;
+    margin-top: 7px
+}
+
+.position-input{
+    position: absolute;
+    left: 150px;
+    height: 25px;
+}
+
+.force-input{
+    position: absolute;
+    left: 150px;
+    width: 70px;
+    height: 25px;
+    margin-top: 15px;
+}
+
+.button-container2 {
+    position: absolute;
+    border: rgb(0, 0, 0) 1px solid;
+    margin-top: 50px;
+    display: flex;
+    gap: 2px; 
+    left: 230px;
+    top: 88.5px;
+}
+
+.up,.down,.up2,.down2,.up3,.down3,.up4,.down4{
+    width: auto;
+    height: 32px;
+}
+
+.angle-container {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+}
+.angle-container div {
+    color: white;
+    font-size: 15px;
+    margin-top: 7px
+}
+
+.angle{
+    position: absolute;
+    left: 150px;
+    height: 25px;
+}
+
+.cancle-add {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.cancle-add div{
+    color: white;
+}
+
+.cancle-add .addforce1,.addforce2,.addforce3,.addforce4{
+    margin-left: 140px;
+    width: 200px;
+    height: 30px;
+    background-color: #04AA6D;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    transition: .5s;
+}
+
+.cancle-add .addforce1:hover,.addforce2:hover,.addforce3:hover,.addforce4:hover{
+    background-color: #005d3b;
+}
+
+
+.position-container div {
+    color: white;
+    font-size: 15px;
+    margin-top: 7px
+}
+
+.position-input2,.Start-position-input,.End-position-input{
+    position: absolute;
+    left: 150px;
+    height: 25px;
+}
+
+.Moment-input{
+    position: absolute;
+    left: 150px;
+    width: 70px;
+    height: 25px;
+    margin-top: 15px;
+}
+
+.button-container3 {
+    position: absolute;
+    border: rgb(0, 0, 0) 1px solid;
+    margin-top: 50px;
+    display: flex;
+    gap: 2px; 
+    left: 230px;
+    top: 97.2px;
+}
+
+.cw,.ccw{
+    width: auto;
+    height: 32px;
+}
+
+.button-container4,.button-container5 {
+    position: absolute;
+    border: rgb(0, 0, 0) 1px solid;
+    margin-top: 50px;
+    display: flex;
+    gap: 2px; 
+    left: 230px;
+    top: 122.2px;
+}
+
+.button-container6{
+    position: absolute;
+    border: rgb(0, 0, 0) 1px solid;
+    margin-top: 50px;
+    display: flex;
+    gap: 2px; 
+    left: 230px;
+    top: 157.2px;
+}
+
+.cancle-btn{
+    position: absolute;
+    background: transparent;
+    border: none;
+    color: white;
+    margin-left: 10px;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.cancle-btn:hover{
+    border: 1px solid rgb(177, 177, 177);
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.activebtn{
+    background-color: #00b573;
+    border: #00b573 1px solid;
+}
+
+.arrowPointLoad {
+    position: absolute;
+    top: 38%;
+    left: 420px;
+    display: flex;
+    width: auto;
+    height: 30px;
+    transform: rotate(-90deg) scaleX(1);
+    transform-origin: center left;
+}
+
+.mirrored {
+    transform: rotate(-90deg) scaleX(-1);
+}
+
+.mirror{
+    transform: scaleX(-1);
+}
+
+.Magnitude,.Magnitude-Moment{
+    position: absolute;
+    top: 31%;
+    left: 410px;
+    display: flex;
+    font-size: 20px;
+}
+
+.Moment{
+    position: absolute;
+    top: 37%;
+    left: 395px;
+    display: flex;
+    width: auto;
+    height: 50px;
+    transform-origin: center;
+}
+
+.ax{
+    width: 40px;
+    position: absolute;
+    top: 37%;
+    left: 375px;
+}
+.ay{
+    width: 40px;
+    position: absolute;
+    top: 45%;
+    left: 410px;
+}
+
+.bx{
+    width: 40px;
+    position: absolute;
+    top: 37%;
+    left: 1430px;
+}
+
+.by{
+    width: 40px;
+    position: absolute;
+    top: 45%;
+    left: 1390px;
+}
